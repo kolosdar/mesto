@@ -1,0 +1,6 @@
+.profile {
+  padding: 36.25px 0 47.25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
