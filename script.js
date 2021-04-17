@@ -8,6 +8,8 @@ let profile = document.querySelector('.profile');
 let profileName = profile.querySelector('.profile__name');
 let profileHobby = profile.querySelector('.profile__hobby');
 
+let elementLikes = document.querySelectorAll('.element__like');
+
 function popupClose() {
   popup.classList.remove('popup_opened');
 }
@@ -30,3 +32,9 @@ popupBtnClose.addEventListener('click', function () {
 });
 
 popupForm.addEventListener('submit', formSubmitHandler);
+
+for (let i = 0; i < elementLikes.length; i++) {
+  elementLikes[i].addEventListener('click', function () {
+    elementLikes[i].classList.toggle('element__like_active');
+  });
+}
