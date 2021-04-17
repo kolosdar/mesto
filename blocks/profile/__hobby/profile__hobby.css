@@ -5,4 +5,12 @@
   line-height: 1.21;
   font-weight: normal;
   color: #fff;
+  grid-area: hobby;
+}
+
+@media (max-width: 660px) {
+  .profile__hobby {
+    padding-top: 14px;
+    font-size: 14px;
+  }
 }

@@ -8,6 +8,8 @@
   background-image: url(../../../images/close-icon.svg);
   background-position: center;
   background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
   cursor: pointer;
   opacity: 1;
   transition: opacity .2s ease-in-out;
@@ -19,4 +21,14 @@
 
 .popup__btn-close:hover {
   opacity: .6;
+}
+
+@media (max-width: 660px) {
+  .popup__btn-close {
+    top: -43px;
+    left: 256px;
+    width: 26px;
+    height: 26px;
+    background-size: 26px 26px;
+  }
 }

@@ -1,4 +1,22 @@
 .profile__info {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-areas: "avatar name edit"
+                       "avatar hobby .";
+}
+
+@media (max-width: 660px) {
+  .profile__info {
+    display: grid;
+    padding-left: 6%;
+    grid-template-areas: "avatar ."
+                         "name edit"
+                         "hobby .";
+    justify-items: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile__info {
+    padding-left: 9%;
+  }
 }

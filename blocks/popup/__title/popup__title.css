@@ -6,3 +6,10 @@
   font-weight: 900;
   color: #000;
 }
+
+@media (max-width: 660px) {
+  .popup__title {
+    padding: 0 0 45px 0;
+    font-size: 18px;
+  }
+}

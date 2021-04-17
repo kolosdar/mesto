@@ -8,3 +8,17 @@
   justify-content: space-between;
   list-style-type: none;
 }
+
+@media (max-width: 960px) {
+  .elements__list {
+    grid-template-columns: repeat(2, 282px);
+    column-gap: 17px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 660px) {
+  .elements__list {
+    grid-template-columns: 282px;
+  }
+}

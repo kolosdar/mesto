@@ -6,3 +6,10 @@
   font-weight: normal;
   color: #545454;
 }
+
+@media (max-width: 660px) {
+  .footer__copyright {
+    font-size: 14px;
+    padding-left: 5.9375%;
+  }
+}

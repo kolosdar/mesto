@@ -22,3 +22,10 @@
 .popup__btn-save:hover {
   opacity: .8;
 }
+
+@media (max-width: 660px) {
+  .popup__btn-save {
+    padding: 14px 82px;
+    font-size: 14px;
+  }
+}
