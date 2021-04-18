@@ -1,16 +1,21 @@
 .profile__hobby {
   margin: 0;
   padding: 16px 0 0 0;
+  max-width: 294px;
   font-size: 18px;
   line-height: 1.21;
   font-weight: normal;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   grid-area: hobby;
 }
 
 @media (max-width: 660px) {
   .profile__hobby {
     padding-top: 14px;
+    max-width: 260px;
     font-size: 14px;
   }
 }

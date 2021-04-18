@@ -25,6 +25,7 @@
 
 @media (max-width: 660px) {
   .popup__btn-save {
+    margin-top: 45px;
     padding: 14px 82px;
     font-size: 14px;
   }

@@ -3,7 +3,6 @@
   margin: auto;
   padding: 34px 36px 37px;
   width: 430px;
-  height: 330px;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: #fff;
@@ -15,7 +14,6 @@
 @media (max-width: 660px) {
   .popup__container {
     width: 282px;
-    height: 322px;
     padding: 25px 22px;
   }
 }

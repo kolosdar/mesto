@@ -73,15 +73,17 @@
     </footer>
 
     <div class="popup">
-      <form class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input">
-        <input class="popup__input">
-        <button class="popup__btn-save" type="submit">Сохранить</button>
+      <div class="popup__container">
         <button class="popup__btn-close" type="button"></button>
-      </form>
+        <form class="popup__form" name="popup-form">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__input" name="profile-name" type="text">
+          <input class="popup__input" name="profile-hobby" type="text">
+          <button class="popup__btn-save" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
