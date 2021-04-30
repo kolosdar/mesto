@@ -25,8 +25,8 @@
 
 @media (max-width: 660px) {
   .popup__btn-close {
-    top: -43px;
-    left: 256px;
+    bottom: 105%;
+    right: 0px;
     width: 26px;
     height: 26px;
     background-size: 26px 26px;

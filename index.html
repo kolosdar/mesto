@@ -23,48 +23,6 @@
      </section>
      <section class="elements">
        <ul class="elements__list">
-         <li class="element">
-           <img class="element__image" src="images/element-rialto-bridge.jpeg" alt="Rialto Bridge">
-           <div class="element__footer">
-             <h2 class="element__title" lang="en">Rialto Bridge</h2>
-             <button class="element__like" type="button"></button>
-           </div>
-         </li>
-         <li class="element">
-          <img class="element__image" src="images/element-naples.jpeg" alt="Naples">
-          <div class="element__footer">
-            <h2 class="element__title" lang="en">Naples</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-         </li>
-         <li class="element">
-          <img class="element__image" src="images/element-manarola.jpeg" alt="Manarola">
-          <div class="element__footer">
-            <h2 class="element__title" lang="en">Manarola</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-         </li>
-         <li class="element">
-          <img class="element__image" src="images/element-giardino-bardini.jpeg" alt="Giardino Bardini">
-          <div class="element__footer">
-            <h2 class="element__title" lang="en">Giardino Bardini</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-         </li>
-         <li class="element">
-          <img class="element__image" src="images/element-castel-san-pietro.jpeg" alt="Castel San Pietro">
-          <div class="element__footer">
-            <h2 class="element__title" lang="en">Castel San Pietro</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-         </li>
-         <li class="element">
-          <img class="element__image" src="images/piazza-pretoria.jpeg" alt="Piazza Pretoria">
-          <div class="element__footer">
-            <h2 class="element__title" lang="en">Piazza Pretoria</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-         </li>
        </ul>
      </section>
     </main>
@@ -74,6 +32,17 @@
 
     <div class="container"></div>
 
+    <template id="element">
+      <li class="element">
+        <img class="element__image">
+        <div class="element__footer">
+          <h2 class="element__title" lang="en"></h2>
+          <button class="element__like" type="button"></button>
+        </div>
+        <button class="element__trash" type="button"></button>
+      </li>
+    </template>
+
 
     <div class="popup popup_type_edit">
       <div class="popup__container popup__container_type_action">
@@ -82,6 +51,18 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input" name="profile-name" type="text">
           <input class="popup__input" name="profile-hobby" type="text">
+          <button class="popup__btn-save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_add">
+      <div class="popup__container popup__container_type_action">
+        <button class="popup__btn-close" type="button"></button>
+        <form class="popup__form" name="popup-form">
+          <h2 class="popup__title">Новое место</h2>
+          <input class="popup__input" name="place-name" type="text" placeholder="Название">
+          <input class="popup__input" name="link" type="text" placeholder="Ссылка на картинку">
           <button class="popup__btn-save" type="submit">Сохранить</button>
         </form>
       </div>
