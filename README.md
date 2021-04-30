@@ -12,4 +12,4 @@
 * JavaScript 6
 
 
-## [Ссылка на GitHub Page](https://kolosdar.github.io/mesto/)
+## [Ссылка на GitHub Page](https://kolosdar.github.io/mesto/index.html)
