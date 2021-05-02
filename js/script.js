@@ -8,9 +8,8 @@ const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileHobby = profile.querySelector('.profile__hobby');
 const container = document.querySelector('.container');
-const popupPhotoTemplate = document.querySelector('#popup_type_photo').content;
-const popupPhotoElement = popupPhotoTemplate.querySelector('.popup_type_photo').cloneNode(true);
-const popupPhotoBtnClose = popupPhotoElement.querySelector('.popup__btn-close');
+const popupPhoto = document.querySelector('.popup_type_photo');
+const popupPhotoBtnClose = popupPhoto.querySelector('.popup__btn-close');
 
 
 const addButton = document.querySelector('.profile__button_type_add');
@@ -21,18 +20,18 @@ const popupAddForm = popupAdd.querySelector('.popup__form');
 const elementTemplate = document.querySelector('#element').content;
 const elementContainer = document.querySelector('.elements__list');
 
-function getCard(cardSrc, cardName) {
+function getCard(card) {
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
   const elementImage = elementElement.querySelector('.element__image');
   const elementTitle = elementElement.querySelector('.element__title');
   const trashButton = elementElement.querySelector('.element__trash');
   const likeButton = elementElement.querySelector('.element__like');
-  elementImage.src = cardSrc;
-  elementImage.alt = cardName;
-  elementTitle.textContent = cardName;
+  elementImage.src = card.link;
+  elementImage.alt = card.name;
+  elementTitle.textContent = card.name;
   trashButton.addEventListener('click', removeCard);
   likeButton.addEventListener('click', likeCard);
-  elementImage.addEventListener('click', () => openModal(cardSrc, cardName));
+  elementImage.addEventListener('click', () => openModal(card));
   return elementElement;
 }
 
@@ -44,32 +43,33 @@ function likeCard(evt) {
   evt.target.classList.toggle('element__like_active');
 }
 
-function openModal(cardSrc, cardName) {
-  popupPhotoElement.querySelector('.popup__img').src = cardSrc;
-  popupPhotoElement.querySelector('.popup__caption').textContent = cardName;
-  popupPhotoElement.querySelector('.popup__img').alt = cardName;
-  container.append(popupPhotoElement);
-  openPopup(popupPhotoElement);
+function openModal(card) {
+  popupPhoto.querySelector('.popup__img').src = card.link;
+  popupPhoto.querySelector('.popup__caption').textContent = card.name;
+  popupPhoto.querySelector('.popup__img').alt = card.name;
+  openPopup(popupPhoto);
 }
 
 //Рендеринг массива из 6-ти карточек
 initialCards.forEach((item) => {
-  elementContainer.append(getCard(item.link, item.name));
+  elementContainer.append(getCard(item));
 });
 
 function addFormSubmitHandler(evt) {  //Добавление новой карточки
-  const cardLink = popupAdd.querySelector('input[name="link"]').value;
-  const cardName = popupAdd.querySelector('input[name="place-name"]').value;
+  const card = {
+    link: popupAdd.querySelector('input[name="link"]').value,
+    name: popupAdd.querySelector('input[name="place-name"]').value
+  }
   evt.preventDefault();
   closePopup(popupAdd);
-  elementContainer.prepend(getCard(cardLink, cardName));
+  elementContainer.prepend(getCard(card));
   popupAddForm.reset();
 }
 
 popupAddForm.addEventListener('submit', addFormSubmitHandler); //Обработчик клика при добавлении новой карточки
 
 
-function openPopupForm() {
+function fillInput() {
   popupName.value = profileName.textContent;
   popupHobby.value = profileHobby.textContent;
 }
@@ -96,7 +96,7 @@ addButton.addEventListener('click', () => openPopup(popupAdd));
 popupAddBtnClose.addEventListener('click', () =>  closePopup(popupAdd));
 
 editButton.addEventListener('click', () => {
-  openPopupForm();
+  fillInput();
   openPopup(popupEdit);
 });
 
@@ -105,7 +105,7 @@ popupEditBtnClose.addEventListener('click', () => closePopup(popupEdit));
 popupEditForm.addEventListener('submit', editFormSubmitHandler);
 
 
-popupPhotoBtnClose.addEventListener('click', () => closePopup(popupPhotoElement));
+popupPhotoBtnClose.addEventListener('click', () => closePopup(popupPhoto));
 
 
 
