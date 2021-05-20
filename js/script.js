@@ -91,9 +91,25 @@ function editFormSubmitHandler(evt) {
   profileHobby.textContent = popupHobby.value;
 }
 
+function closePopupOverlayClick(evt, popup) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popup);
+  }
+}
+
+function closePopupEscapeKeydown(evt, popup) {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
+}
+
 addButton.addEventListener('click', () => openPopup(popupAdd));
 
 popupAddBtnClose.addEventListener('click', () =>  closePopup(popupAdd));
+
+popupAdd.addEventListener('click', (evt) =>  closePopupOverlayClick(evt, popupAdd));
+
+popupAdd.addEventListener('keydown', (evt) => closePopupEscapeKeydown(evt, popupAdd));
 
 editButton.addEventListener('click', () => {
   fillInput();
@@ -104,8 +120,14 @@ popupEditBtnClose.addEventListener('click', () => closePopup(popupEdit));
 
 popupEditForm.addEventListener('submit', editFormSubmitHandler);
 
+popupEdit.addEventListener('click', (evt) =>  closePopupOverlayClick(evt, popupEdit));
+
+popupEdit.addEventListener('keydown', (evt) => closePopupEscapeKeydown(evt, popupEdit));
 
 popupPhotoBtnClose.addEventListener('click', () => closePopup(popupPhoto));
+
+popupPhoto.addEventListener('click', (evt) =>  closePopupOverlayClick(evt, popupPhoto));
+
 
 
 
