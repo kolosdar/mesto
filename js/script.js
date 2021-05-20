@@ -57,7 +57,7 @@ initialCards.forEach((item) => {
 
 function addFormSubmitHandler(evt) {  //Добавление новой карточки
   const card = {
-    link: popupAdd.querySelector('input[name="link"]').value,
+    link: popupAdd.querySelector('input[name="place-link"]').value,
     name: popupAdd.querySelector('input[name="place-name"]').value
   }
   evt.preventDefault();

@@ -47,10 +47,12 @@
     <div class="popup popup_type_edit">
       <div class="popup__container popup__container_type_action">
         <button class="popup__btn-close" type="button"></button>
-        <form class="popup__form" name="popup-form">
+        <form class="popup__form" name="popup-form-edit" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__input" name="profile-name" type="text">
-          <input class="popup__input" name="profile-hobby" type="text">
+          <input class="popup__input popup__input_type_edit" id="profile-name-input" name="profile-name" type="text" minlength="2" maxlength="40" required>
+          <span class="popup__input-error profile-name-input-error"></span>
+          <input class="popup__input" id="profile-hobby-input" name="profile-hobby" type="text" minlength="2" maxlength="200" required>
+          <span class="popup__input-error profile-hobby-input-error"></span>
           <button class="popup__btn-save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -59,10 +61,12 @@
     <div class="popup popup_type_add">
       <div class="popup__container popup__container_type_action">
         <button class="popup__btn-close" type="button"></button>
-        <form class="popup__form" name="popup-form">
+        <form class="popup__form" name="popup-form-add" novalidate>
           <h2 class="popup__title">Новое место</h2>
-          <input class="popup__input" name="place-name" type="text" placeholder="Название">
-          <input class="popup__input" name="link" type="text" placeholder="Ссылка на картинку">
+          <input class="popup__input" id="place-name-input" name="place-name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="popup__input-error place-name-input-error"></span>
+          <input class="popup__input" id="place-link-input" name="place-link" type="url" placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error place-link-input-error"></span>
           <button class="popup__btn-save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -80,5 +84,6 @@
   </div>
   <script src="js/initial-cards.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/validate.js"></script>
 </body>
 </html>
