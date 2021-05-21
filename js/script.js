@@ -14,8 +14,6 @@ const popupPhotoBtnClose = popupPhoto.querySelector('.popup__btn-close');
 const popupImg = popupPhoto.querySelector('.popup__img');
 const popupCaption = popupPhoto.querySelector('.popup__caption');
 
-const placeLink = popupAdd.querySelector('input[name="place-link"]');
-const placeName = popupAdd.querySelector('input[name="place-name"]');
 
 const addButton = document.querySelector('.profile__button_type_add');
 const popupAdd = document.querySelector('.popup_type_add');
@@ -25,6 +23,9 @@ const submitButton = popupAddForm.querySelector('.popup__btn-save');
 
 const elementTemplate = document.querySelector('#element').content;
 const elementContainer = document.querySelector('.elements__list');
+
+const placeLink = popupAdd.querySelector('input[name="place-link"]');
+const placeName = popupAdd.querySelector('input[name="place-name"]');
 
 function getCard(card) {
   const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
