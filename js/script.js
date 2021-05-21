@@ -11,11 +11,17 @@ const container = document.querySelector('.container');
 const popupPhoto = document.querySelector('.popup_type_photo');
 const popupPhotoBtnClose = popupPhoto.querySelector('.popup__btn-close');
 
+const popupImg = popupPhoto.querySelector('.popup__img');
+const popupCaption = popupPhoto.querySelector('.popup__caption');
+
+const placeLink = popupAdd.querySelector('input[name="place-link"]');
+const placeName = popupAdd.querySelector('input[name="place-name"]');
 
 const addButton = document.querySelector('.profile__button_type_add');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupAddBtnClose = popupAdd.querySelector('.popup__btn-close');
 const popupAddForm = popupAdd.querySelector('.popup__form');
+const submitButton = popupAddForm.querySelector('.popup__btn-save');
 
 const elementTemplate = document.querySelector('#element').content;
 const elementContainer = document.querySelector('.elements__list');
@@ -44,9 +50,9 @@ function likeCard(evt) {
 }
 
 function openModal(card) {
-  popupPhoto.querySelector('.popup__img').src = card.link;
-  popupPhoto.querySelector('.popup__caption').textContent = card.name;
-  popupPhoto.querySelector('.popup__img').alt = card.name;
+  popupImg.src = card.link;
+  popupCaption.textContent = card.name;
+  popupImg.alt = card.name;
   openPopup(popupPhoto);
 }
 
@@ -57,13 +63,15 @@ initialCards.forEach((item) => {
 
 function addFormSubmitHandler(evt) {  //Добавление новой карточки
   const card = {
-    link: popupAdd.querySelector('input[name="place-link"]').value,
-    name: popupAdd.querySelector('input[name="place-name"]').value
+    link: placeLink.value,
+    name: placeName.value
   }
   evt.preventDefault();
   closePopup(popupAdd);
   elementContainer.prepend(getCard(card));
   popupAddForm.reset();
+  submitButton.classList.add('popup__btn-save_inactive');
+  submitButton.setAttribute('disabled', 'disabled');
 }
 
 popupAddForm.addEventListener('submit', addFormSubmitHandler); //Обработчик клика при добавлении новой карточки
@@ -77,13 +85,13 @@ function fillInput() {
 function openPopup(popup) {
   popup.classList.remove('fade-out');
   popup.classList.add('fade-in');
-  popup.addEventListener('keydown', closePopupEscapeKeydown);
+  document.addEventListener('keydown', closePopupEscapeKeydown);
 }
 
 function closePopup(popup) {
   popup.classList.remove('fade-in');
   popup.classList.add('fade-out');
-  popup.removeEventListener('keydown', closePopupEscapeKeydown);
+  document.removeEventListener('keydown', closePopupEscapeKeydown);
 }
 
 function editFormSubmitHandler(evt) {
@@ -101,7 +109,8 @@ function closePopupOverlayClick(evt) {
 
 function closePopupEscapeKeydown(evt) {
   if (evt.key === 'Escape') {
-    closePopup(evt.currentTarget);
+    const openedPopup = document.querySelector('.fade-in');
+    closePopup(openedPopup);
   }
 }
 
