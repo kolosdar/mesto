@@ -76,7 +76,5 @@ enableValidation() {
 }
 }
 
-const formValidation = new FormValidator(data, '.popup__form');
-formValidation.enableValidation();
 
 
