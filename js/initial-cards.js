@@ -1,26 +1,26 @@
-const initialCards = [
+export const initialCards = [
   {
-    name: 'Castel San Pietro',
-    link: './images/element-castel-san-pietro.jpeg'
+    text: 'Castel San Pietro',
+    image: './images/element-castel-san-pietro.jpeg'
   },
   {
-    name: 'Giardino Bardini',
-    link: './images/element-giardino-bardini.jpeg'
+    text: 'Giardino Bardini',
+    image: './images/element-giardino-bardini.jpeg'
   },
   {
-    name: 'Manarola',
-    link: './images/element-manarola.jpeg'
+    text: 'Manarola',
+    image: './images/element-manarola.jpeg'
   },
   {
-    name: 'Naples',
-    link: './images/element-naples.jpeg'
+    text: 'Naples',
+    image: './images/element-naples.jpeg'
   },
   {
-    name: 'Rialto Bridge',
-    link: './images/element-rialto-bridge.jpeg'
+    text: 'Rialto Bridge',
+    image: './images/element-rialto-bridge.jpeg'
   },
   {
-    name: 'Piazza Pretoria',
-    link: './images/element-piazza-pretoria.jpeg'
+    text: 'Piazza Pretoria',
+    image: './images/element-piazza-pretoria.jpeg'
   }
 ];

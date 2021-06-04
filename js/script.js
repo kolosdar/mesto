@@ -1,3 +1,9 @@
+import {initialCards} from './initial-cards.js';
+
+import {data, FormValidator} from './FormValidator.js';
+
+import Card from './Card.js';
+
 const editButton = document.querySelector('.profile__button_type_edit');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupEditBtnClose = popupEdit.querySelector('.popup__btn-close');
@@ -27,49 +33,23 @@ const elementContainer = document.querySelector('.elements__list');
 const placeLink = popupAdd.querySelector('input[name="place-link"]');
 const placeName = popupAdd.querySelector('input[name="place-name"]');
 
-function getCard(card) {
-  const elementElement = elementTemplate.querySelector('.element').cloneNode(true);
-  const elementImage = elementElement.querySelector('.element__image');
-  const elementTitle = elementElement.querySelector('.element__title');
-  const trashButton = elementElement.querySelector('.element__trash');
-  const likeButton = elementElement.querySelector('.element__like');
-  elementImage.src = card.link;
-  elementImage.alt = card.name;
-  elementTitle.textContent = card.name;
-  trashButton.addEventListener('click', removeCard);
-  likeButton.addEventListener('click', likeCard);
-  elementImage.addEventListener('click', () => openModal(card));
-  return elementElement;
-}
-
-function removeCard(evt) {
-  evt.target.closest('.element').remove();
-}
-
-function likeCard(evt) {
-  evt.target.classList.toggle('element__like_active');
-}
-
-function openModal(card) {
-  popupImg.src = card.link;
-  popupCaption.textContent = card.name;
-  popupImg.alt = card.name;
-  openPopup(popupPhoto);
-}
-
-//Рендеринг массива из 6-ти карточек
 initialCards.forEach((item) => {
-  elementContainer.append(getCard(item));
-});
+    const card = new Card(item, '#element');
+    const cardElement = card.generateCard();
+    document.querySelector('.elements__list').append(cardElement);
+  });
+
 
 function addFormSubmitHandler(evt) {  //Добавление новой карточки
-  const card = {
+  const obj = {
     link: placeLink.value,
     name: placeName.value
   }
+  const cart = new Card(obj, '#element');
+  const cardElement = cart.generateCard();
   evt.preventDefault();
   closePopup(popupAdd);
-  elementContainer.prepend(getCard(card));
+  elementContainer.prepend(cardElement);
   popupAddForm.reset();
   submitButton.classList.add('popup__btn-save_inactive');
   submitButton.setAttribute('disabled', 'disabled');
@@ -83,7 +63,7 @@ function fillInput() {
   popupHobby.value = profileHobby.textContent;
 }
 
-function openPopup(popup) {
+export default function openPopup(popup) {
   popup.classList.remove('fade-out');
   popup.classList.add('fade-in');
   document.addEventListener('keydown', closePopupEscapeKeydown);
@@ -140,4 +120,8 @@ popupPhoto.addEventListener('click', closePopupOverlayClick);
 
 
 
+
+
+const formValidation = new FormValidator(data, '.popup__form');
+formValidation.enableValidation();
 
