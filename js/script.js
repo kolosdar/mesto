@@ -1,8 +1,17 @@
 import {initialCards} from './initial-cards.js';
 
-import {data, FormValidator} from './FormValidator.js';
+import {FormValidator} from './FormValidator.js';
 
-import Card from './Card.js';
+import {Card} from './Card.js';
+
+const dataValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__btn-save',
+  inactiveButtonClass: 'popup__btn-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
 
 const editButton = document.querySelector('.profile__button_type_edit');
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -36,14 +45,14 @@ const placeName = popupAdd.querySelector('input[name="place-name"]');
 initialCards.forEach((item) => {
     const card = new Card(item, '#element');
     const cardElement = card.generateCard();
-    document.querySelector('.elements__list').append(cardElement);
+    elementContainer.append(cardElement);
   });
 
 
 function addFormSubmitHandler(evt) {  //Добавление новой карточки
   const obj = {
-    link: placeLink.value,
-    name: placeName.value
+    image: placeLink.value,
+    text: placeName.value
   }
   const cart = new Card(obj, '#element');
   const cardElement = cart.generateCard();
@@ -63,7 +72,8 @@ function fillInput() {
   popupHobby.value = profileHobby.textContent;
 }
 
-export default function openPopup(popup) {
+
+function openPopup(popup) {
   popup.classList.remove('fade-out');
   popup.classList.add('fade-in');
   document.addEventListener('keydown', closePopupEscapeKeydown);
@@ -118,10 +128,11 @@ popupPhotoBtnClose.addEventListener('click', () => closePopup(popupPhoto));
 popupPhoto.addEventListener('click', closePopupOverlayClick);
 
 
+const addFormValidation = new FormValidator(dataValidation, popupAddForm);
+const editFormValidation = new FormValidator(dataValidation, popupEditForm);
+
+addFormValidation.enableValidation();
+editFormValidation.enableValidation();
 
 
-
-
-const formValidation = new FormValidator(data, '.popup__form');
-formValidation.enableValidation();
-
+export {openPopup, closePopupEscapeKeydown, dataValidation};
